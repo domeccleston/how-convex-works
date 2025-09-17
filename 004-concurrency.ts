@@ -6,7 +6,7 @@ function simulateRaceCondition(logs, itemId, fns, delays) {
     setTimeout(() => {
       const currentState = log.getCurrentState()[itemId];
       fn(currentState);
-    }, delays[i]);
+    }, delays.delay[i]);
   });
 }
 
@@ -25,7 +25,7 @@ simulateRaceCondition(
     (state) => log.append({ id: stockId, quantity: state.quantity - 1 }),
     (state) => log.append({ id: stockId, quantity: state.quantity - 1 }),
   ],
-  [10, 15],
+  { delay: [10, 15] },
 );
 
 setTimeout(() => {
